@@ -1,11 +1,11 @@
 var starXPos = [];
 var starYPos = [];
-var star = "⭐️";
+var pawPrints = "🐾";
 var starTotal = 100;
 
 var planetXPos = [];
 var planetYPos = [];
-var planet = "🪐";
+var dogTreat = "🦴";
 var planetTotal = 3;
 var planetFound = 0;
 
@@ -48,11 +48,11 @@ var display = function(){
   textSize(20);
 
   for(var i = 0; i < planetXPos.length; i ++){
-    text(planet, planetXPos[i], planetYPos[i]);
+    text(dogTreat, planetXPos[i], planetYPos[i]);
   }
 
   for(var i = 0; i < starXPos.length; i ++){
-    text(star, starXPos[i], starYPos[i]);
+    text(pawPrints, starXPos[i], starYPos[i]);
   }
 
   fill(0,0,0);
