@@ -1,13 +1,14 @@
-var starXPos = [];
-var starYPos = [];
+var pawXPos = [];
+var pawYPos = [];
 var pawPrints = "🐾";
-var starTotal = 100;
+var pawTotal = 200;
 
-var planetXPos = [];
-var planetYPos = [];
+var treatXPos = [];
+var treatYPos = [];
 var dogTreat = "🦴";
-var planetTotal = 3;
-var planetFound = 0;
+var dogTreatTotal = 5;
+var dogTreatFound = 0;
+var snoopyComments = ["FIND SNOOPY", "PLS WE NEED TO GET HIM TO CHARLIE BROWN", "HURRY QUICKLY"];
 
 setup = function() {
    size(600, 450); 
@@ -32,56 +33,66 @@ mouseClicked = function(){
 }
 
 var check = function(xClick, yClick){
-  for(var i = 0; i < planetXPos.length; i++){
-    if(dist(xClick - 5, yClick - 5, planetXPos[i], planetYPos[i])<15){
-      planetXPos.splice(i, 1);
-      planetYPos.splice(i, 1);
-      planetFound++;
+  for(var i = 0; i < treatXPos.length; i++){
+    if(dist(xClick - 5, yClick - 5, treatXPos[i], treatYPos[i])<15){
+      treatXPos.splice(i, 1);
+      treatYPos.splice(i, 1);
+      dogTreatFound++;
     }
   }
 }
 
 var display = function(){
-  background(100,100,100);
+  background(173, 216, 230);
+  //snoopyComments code
+   fill(0, 0, 255)
+   text(snoopyComments[0], 20, 20)
+   text(snoopyComments[1], 280, 20)
+   text(snoopyComments[2], 260, 380)
 
   fill(200,200,0);
   textSize(20);
 
-  for(var i = 0; i < planetXPos.length; i ++){
-    text(dogTreat, planetXPos[i], planetYPos[i]);
+  for(var i = 0; i < treatXPos.length; i ++){
+    text(dogTreat, treatXPos[i], treatYPos[i]);
   }
 
-  for(var i = 0; i < starXPos.length; i ++){
-    text(pawPrints, starXPos[i], starYPos[i]);
+  for(var i = 0; i < pawXPos.length; i ++){
+    text(pawPrints, pawXPos[i], pawYPos[i]);
   }
 
+//black textbox code
   fill(0,0,0);
   rect(0,400,600,50);
   fill(255,255,255);
-  text("Find The " + planet + "s   |   " + planet + " " + planetFound + "/" + planetTotal, 0, 425);
+  text("Find The " +  dogTreat + "s to reveal Snoopy!!  |   " + dogTreat + " " + dogTreatFound + "/" + dogTreatTotal, 0, 425);
 
-  if(planetFound == planetTotal){
+
+//end of game code
+  if(dogTreatFound == dogTreatTotal){
     fill(0, 200, 200);
-    textSize(50);
-    text("Press 'r' to restart \nthe game", 50, 200);
+    snoopyComments = 0
+    textSize(20);
+    text("Press 'r' to restart \nthe game", 50, 350);
   }
 }
 
 var reset = function(){
-  starXPos = [];
-  starYPos = [];
-  planetXPos = [];
-  planetYPos = [];
-  planetFound = 0;
+  pawXPos = [];
+  pawYPos = [];
+  treatXPos = [];
+  treatYPos = [];
+  dogTreatFound = 0;
 
-
-  for(var i = 0; i < starTotal; i++){
-    starXPos.push(random(0,600));
-    starYPos.push(random(0,400));
+//random paw placement code
+  for(var i = 0; i < pawTotal; i++){
+    pawXPos.push(random(0,600));
+    pawYPos.push(random(0,400));
   }
 
-  for(var i = 0; i < planetTotal; i++){
-    planetXPos.push(random(0,600));
-    planetYPos.push(random(0,400));
+//random dogtreat placement code
+  for(var i = 0; i < dogTreatTotal; i++){
+    treatXPos.push(random(0,600));
+    treatYPos.push(random(0,400));
   }
 }
