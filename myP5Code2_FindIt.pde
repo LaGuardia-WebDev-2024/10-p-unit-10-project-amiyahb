@@ -8,7 +8,12 @@ var treatYPos = [];
 var dogTreat = "🦴";
 var dogTreatTotal = 5;
 var dogTreatFound = 0;
+
 var snoopyComments = ["FIND SNOOPY", "PLS WE NEED TO GET HIM TO CHARLIE BROWN", "HURRY QUICKLY"];
+
+var snoopyImage = loadImage("https://static.wikia.nocookie.net/peanuts/images/1/11/Snoopy-its_the_easter_beagle.png/revision/latest/scale-to-width/360?cb=20230120053947");
+var snoopyImageTwo = loadImage("https://images.pixels.com/images/artworkimages/medium/3/snoopy-woodstock-allen-s-taylor-transparent.png");
+
 
 setup = function() {
    size(600, 450); 
@@ -44,14 +49,26 @@ var check = function(xClick, yClick){
 
 var display = function(){
   background(173, 216, 230);
+
+
   //snoopyComments code
    fill(0, 0, 255)
-   text(snoopyComments[0], 20, 20)
-   text(snoopyComments[1], 280, 20)
-   text(snoopyComments[2], 260, 380)
+   text(snoopyComments[0], 20, 20);
+   text(snoopyComments[1], 280, 20);
+   text(snoopyComments[2], 260, 380);
+
+//puppies at the bottom of the map
+  var x = 0;
+  while(x < 600){
+    fill(98, 120, 188)
+    text("૮ ᴖﻌᴖა", x, 395);
+    x += 20;
+   }
 
   fill(200,200,0);
   textSize(20);
+
+
 
   for(var i = 0; i < treatXPos.length; i ++){
     text(dogTreat, treatXPos[i], treatYPos[i]);
@@ -74,6 +91,8 @@ var display = function(){
     snoopyComments = 0
     textSize(20);
     text("Press 'r' to restart \nthe game", 50, 350);
+    image(snoopyImage, 290, 100, 150, 200)
+    image(snoopyImageTwo, 100, 50, 150, 150)
   }
 }
 
