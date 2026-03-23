@@ -9,6 +9,9 @@ var dogTreat = "🦴";
 var dogTreatTotal = 5;
 var dogTreatFound = 0;
 
+var dogX = [];
+var dogY = [];
+
 var snoopyComments = ["FIND SNOOPY", "PLS WE NEED TO GET HIM TO CHARLIE BROWN", "HURRY QUICKLY"];
 
 var snoopyImage = loadImage("https://static.wikia.nocookie.net/peanuts/images/1/11/Snoopy-its_the_easter_beagle.png/revision/latest/scale-to-width/360?cb=20230120053947");
@@ -30,11 +33,15 @@ draw = function(){
    }
 
   display();
+
+  drawStars()
 }
 
 
 mouseClicked = function(){
   check(mouseX, mouseY);
+  dogX.push(mouseX);
+  dogY.push(mouseY);
 }
 
 var check = function(xClick, yClick){
@@ -57,12 +64,16 @@ var display = function(){
    text(snoopyComments[1], 280, 20);
    text(snoopyComments[2], 260, 380);
 
-//puppies at the bottom of the map
+//puppies at the bottom and top of the map
   var x = 0;
   while(x < 600){
     fill(98, 120, 188)
     text("૮ ᴖﻌᴖა", x, 395);
     x += 20;
+   }
+   for(var x = 0; x < 600; x+=20){
+    fill(98, 120, 188)
+    text("૮ ᴖﻌᴖა", x, 10);
    }
 
   fill(200,200,0);
@@ -91,8 +102,8 @@ var display = function(){
     snoopyComments = 0
     textSize(20);
     text("Press 'r' to restart \nthe game", 50, 350);
-    image(snoopyImage, 290, 100, 150, 200)
-    image(snoopyImageTwo, 100, 50, 150, 150)
+    image(snoopyImage, 270, 100, 150, 200)
+    image(snoopyImageTwo, 50, 50, 150, 150)
   }
 }
 
@@ -102,6 +113,9 @@ var reset = function(){
   treatXPos = [];
   treatYPos = [];
   dogTreatFound = 0;
+  dogX = [];
+  dogY = [];
+
 
 //random paw placement code
   for(var i = 0; i < pawTotal; i++){
@@ -114,4 +128,19 @@ var reset = function(){
     treatXPos.push(random(0,600));
     treatYPos.push(random(0,400));
   }
+}
+var move = 1;
+var drawStars = function() {
+    for (var x = 0; x < dogX.length; x++) {
+        text("🐶", dogX[x], dogY[x]);
+        dogX[x] += move;
+
+        if(dogX[0] > 600){
+          move = -1
+        }
+        if(dogX[0] < -200){
+          move = 1
+        }
+    }
+
 }
