@@ -104,6 +104,8 @@ var display = function(){
     text("Press 'r' to restart \nthe game", 50, 350);
     image(snoopyImage, 270, 100, 150, 200)
     image(snoopyImageTwo, 50, 50, 150, 150)
+    pawXPos = [];
+    pawYPos = [];
   }
 }
 

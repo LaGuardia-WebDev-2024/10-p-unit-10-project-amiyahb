@@ -1,7 +1,6 @@
 body {
-  background-image: url("Sprinkles.jpg");
+  background-image: url("https://media4.giphy.com/media/I9V0AY2n06nMhb8Tbc/source.gif");
   background-color: hsl(213, 85%, 92%);
-  background-blend-mode: overlay;
   text-align: center;
   background-size: cover;
   background-repeat: no-repeat;
